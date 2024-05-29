@@ -1,17 +1,14 @@
-import "./new.scss";
+import "./new2.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useEffect, useState } from "react";
-import { addDoc, doc, setDoc, collection, Timestamp, serverTimestamp } from "firebase/firestore";
-import { auth, db, getStorage, storage} from "../../firebase";
-import { set } from "firebase/database";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 
-
-const New = ({ inputs, title }) => {
+const New2 = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
@@ -19,72 +16,59 @@ const New = ({ inputs, title }) => {
 
   useEffect(() => {
     const uploadFile = () => {
-      
       const name = new Date().getTime() + file.name;
 
-      console.log(name);
-      const storageRef = ref(storage, file.name);
+      const storageRef = ref(storage, name);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
-
-uploadTask.on('state_changed', 
-  (snapshot) => {
-    
-    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-    setPerc(progress);
-    switch (snapshot.state) {
-      case 'paused':
-        console.log('Upload is paused');
-        break;
-      case 'running':
-        console.log('Upload is running');
-        break;
-        default:
-          break;
-    }
-  }, 
-  (error) => {
-    console.log(error);
-  }, 
-  () => {
-    
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      setData((prev) => ({...prev, image: downloadURL}));
-    });
-  }
-);
-    
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setPerc(progress);
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+            default:
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setData((prev) => ({ ...prev, image: downloadURL }));
+          });
+        }
+      );
     };
+
     file && uploadFile();
   }, [file]);
 
-  const handleInout = (e) => {
+  const handleInput = (e) => {
     const id = e.target.id;
     const value = e.target.value;
-
     setData({ ...data, [id]: value });
   };
-  
-  
 
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      const res = await createUserWithEmailAndPassword(auth, data.email, data.password);
-      await setDoc(doc(db, "usuarios", res.user.uid), {
+      await addDoc(collection(db, "pagos"), {
         ...data,
-        Timestamp: serverTimestamp()
+        timestamp: serverTimestamp()
       });
       navigate(-1);
     } catch (error) {
-       console.error(error);
+      console.error(error);
     }
-    
-
-    
-  }
-
+  };
 
   return (
     <div className="new">
@@ -122,14 +106,17 @@ uploadTask.on('state_changed',
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  <input 
-                  id={input.id}
-                  type={input.type} 
-                  placeholder={input.placeholder} 
-                  onChange={handleInout} />
+                  <input
+                    id={input.id}
+                    type={input.type}
+                    placeholder={input.placeholder}
+                    onChange={handleInput}
+                  />
                 </div>
               ))}
-              <button disabled={per !== null && per < 100} type="submit">Enviar</button>
+              <button disabled={per !== null && per < 100} type="submit">
+                Enviar
+              </button>
             </form>
           </div>
         </div>
@@ -138,4 +125,4 @@ uploadTask.on('state_changed',
   );
 };
 
-export default New;
+export default New2;

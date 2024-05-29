@@ -1,3 +1,95 @@
-.login{
-    
+.login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #363740;
 }
+
+.login #blanco {
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.forms {
+    width: -2rem;
+    height: 45rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login form input {
+    width: 49rem;
+    height: 30px;
+    margin: 10px;
+}
+
+.login form button {
+    width: 50rem;
+    height: 50px;
+    margin-top: 2rem;
+    border-radius: 1.5ch;
+    background-color: #3751FF;
+    color: white;
+}
+
+.login form label {
+    width: 50rem;
+    height: 30px;
+    margin-top: 2rem;
+    border: none;
+    color: #BFC1CD;
+}
+
+.login form h4 {
+    color: #BFC1CD;
+}
+
+.login form span {
+    font-size: 12px;
+    color: red;
+    margin-top: 10px;
+}
+
+.element-log-in {
+    background-color: #363740;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.element-log-in .log-in-wrapper {
+    background-color: var(--sidebar-bg);
+    height: 1080px;
+    width: 1920px;
+}
+
+.element-log-in .log-in {
+    background-color: #FFFFFF;
+    border: 1px solid;
+    border-radius: 8px;
+    height: 802px;
+    left: 530px;
+    overflow: hidden;
+    position: relative;
+    top: 139px;
+    width: 860px;
+}
+
+/* Continúa con las demás reglas de estilo .element-log-in aquí... */

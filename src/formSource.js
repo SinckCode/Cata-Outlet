@@ -1,77 +1,83 @@
 export const userInputs = [
     {
-      id: 1,
+      id: "username",
       label: "Username",
       type: "text",
       placeholder: "john_doe",
     },
     {
-      id: 2,
+      id: "displayName",
       label: "Name and surname",
       type: "text",
       placeholder: "John Doe",
     },
     {
-      id: 3,
+      id: "email",
       label: "Email",
       type: "mail",
       placeholder: "john_doe@gmail.com",
     },
     {
-      id: 4,
+      id: "phone",
       label: "Phone",
       type: "text",
       placeholder: "+1 234 567 89",
     },
     {
-      id: 5,
+      id: "password",
       label: "Password",
       type: "password",
     },
     {
-      id: 6,
+      id: "address",
       label: "Address",
       type: "text",
       placeholder: "Elton St. 216 NewYork",
     },
     {
-      id: 7,
+      id: "country",
       label: "Country",
       type: "text",
       placeholder: "USA",
     },
   ];
   
-  export const productInputs = [
+  export const pagosInputs = [
     {
       id: 1,
-      label: "Title",
+      label: "Nombre del Pagador",
       type: "text",
-      placeholder: "Apple Macbook Pro",
+      placeholder: "Juan Pérez",
     },
     {
       id: 2,
-      label: "Description",
-      type: "text",
-      placeholder: "Description",
+      label: "Correo Electrónico del Pagador",
+      type: "email",
+      placeholder: "juanperez@example.com",
     },
     {
       id: 3,
-      label: "Category",
-      type: "text",
-      placeholder: "Computers",
+      label: "Monto",
+      type: "number",
+      placeholder: "100.00",
     },
     {
       id: 4,
-      label: "Price",
+      label: "Método de Pago",
       type: "text",
-      placeholder: "100",
+      placeholder: "Tarjeta de Crédito",
     },
     {
       id: 5,
-      label: "Stock",
+      label: "Fecha de Pago",
+      type: "date",
+      placeholder: "",
+    },
+    {
+      id: 6,
+      label: "ID de Transacción",
       type: "text",
-      placeholder: "in stock",
+      placeholder: "1234567890",
     },
   ];
   

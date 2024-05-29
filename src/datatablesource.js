@@ -7,7 +7,7 @@ export const userColumns = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
+          <img className="cellImg" src={params.row.image} alt="avatar" />
           {params.row.username}
         </div>
       );
@@ -20,8 +20,8 @@ export const userColumns = [
   },
 
   {
-    field: "age",
-    headerName: "Age",
+    field: "address",
+    headerName: "Address",
     width: 100,
   },
   {
@@ -38,86 +38,51 @@ export const userColumns = [
   },
 ];
 
-//temporary data
-export const userRows = [
+
+
+export const pagosColumns = [
+  { field: "id", headerName: "ID", width: 70 },
   {
-    id: 1,
-    username: "Snow",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    status: "active",
-    email: "1snow@gmail.com",
-    age: 35,
+    field: "user",
+    headerName: "User",
+    width: 230,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.image} alt="avatar" />
+          {params.row.username}
+        </div>
+      );
+    },
   },
   {
-    id: 2,
-    username: "Jamie Lannister",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "2snow@gmail.com",
-    status: "passive",
-    age: 42,
+    field: 1,
+    headerName: "Nombre del Pagador",
+    width: 230,
   },
   {
-    id: 3,
-    username: "Lannister",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "3snow@gmail.com",
-    status: "pending",
-    age: 45,
+    field: 2,
+    headerName: "Correo Electrónico del Pagador",
+    width: 230,
   },
   {
-    id: 4,
-    username: "Stark",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "4snow@gmail.com",
-    status: "active",
-    age: 16,
+    field: 3,
+    headerName: "Monto",
+    width: 100,
   },
   {
-    id: 5,
-    username: "Targaryen",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "5snow@gmail.com",
-    status: "passive",
-    age: 22,
+    field: 4,
+    headerName: "Método de Pago",
+    width: 160,
   },
   {
-    id: 6,
-    username: "Melisandre",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "6snow@gmail.com",
-    status: "active",
-    age: 15,
+    field: 5,
+    headerName: "Fecha de Pago",
+    width: 160,
   },
   {
-    id: 7,
-    username: "Clifford",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "7snow@gmail.com",
-    status: "passive",
-    age: 44,
-  },
-  {
-    id: 8,
-    username: "Frances",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "8snow@gmail.com",
-    status: "active",
-    age: 36,
-  },
-  {
-    id: 9,
-    username: "Roxie",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "snow@gmail.com",
-    status: "pending",
-    age: 65,
-  },
-  {
-    id: 10,
-    username: "Roxie",
-    img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    email: "snow@gmail.com",
-    status: "active",
-    age: 65,
+    field: 6,
+    headerName: "ID de Transacción",
+    width: 160,
   },
 ];

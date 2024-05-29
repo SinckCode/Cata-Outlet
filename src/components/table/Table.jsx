@@ -11,8 +11,8 @@ const List = () => {
   const rows = [
     {
       id: 1143155,
-      product: "Acer Nitro 5",
-      img: "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_UY327_FMwebp_QL65_.jpg",
+      product: "Juan García Pérez",
+      img: "https://m.media-amazon.com/images/I/71DDmAh2DRL.__AC_SX300_SY300_QL70_ML2_.jpg",
       customer: "John Smith",
       date: "1 March",
       amount: 785,

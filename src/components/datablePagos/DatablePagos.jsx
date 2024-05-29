@@ -1,17 +1,17 @@
-import "./datatable.scss";
+import "./DatatablePagos.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { pagosColumns, userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db, auth } from "../../firebase"; // Importa auth de firebase/auth
 import { getAuth, deleteUser } from "firebase/auth";
 
-const Datatable = () => {
+const DatatablePagos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => { 
-    const unsub = onSnapshot(collection(db, "usuarios"), (snapShot) => {
+    const unsub = onSnapshot(collection(db, "pagos"), (snapShot) => {
       let list = [];
       snapShot.docs.forEach((doc) => {
         list.push({id: doc.id, ...doc.data()});
@@ -28,12 +28,9 @@ const Datatable = () => {
 
   const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, "usuarios", id));
+      await deleteDoc(doc(db, "pagos", id));
       setData(data.filter((item) => item.id !== id));
 
-      // Obtiene el usuario actual
-      const user = auth.currentUser;
-      deleteUser(user);
     } catch (error) {
       console.log(error);
     }
@@ -65,15 +62,15 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Agregar un Nuevo Usuario
-        <Link to="/users/new" className="link">
+        Agregar un Nuevo Cobro
+        <Link to="/pagos/new2" className="link">
           Agregar Nuevo
         </Link>
       </div>
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={pagosColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
@@ -82,4 +79,4 @@ const Datatable = () => {
   );
 };
 
-export default Datatable;
+export default DatatablePagos;
